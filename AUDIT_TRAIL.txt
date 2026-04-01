@@ -1,0 +1,149 @@
+1. Project Overview
+===================
+Project: Graph rag syst
+Client: 
+
+2. Requirements Traceability
+============================
+{
+  "total_functional": 11,
+  "total_non_functional": 17,
+  "total_constraints": 5,
+  "total_integrations": 3,
+  "total_gaps_risks": 3,
+  "llm_calls": [
+    {
+      "pass": 1,
+      "name": "metadata",
+      "success": true,
+      "model": "llama-3.3-70b-versatile",
+      "input_tokens": 346,
+      "output_tokens": 148
+    },
+    {
+      "pass": 2,
+      "name": "functional_requirements",
+      "success": true,
+      "model": "llama-3.3-70b-versatile",
+      "input_tokens": 469,
+      "output_tokens": 669
+    },
+    {
+      "pass": 3,
+      "name": "non_functional_requirements",
+      "success": true,
+      "model": "llama-3.3-70b-versatile",
+      "input_tokens": 459,
+      "output_tokens": 563
+    },
+    {
+      "pass": 3,
+      "name": "non_functional_requirements",
+      "success": true,
+      "model": "llama-3.1-8b-instant",
+      "input_tokens": 459,
+      "output_tokens": 1200
+    },
+    {
+      "pass": 4,
+      "name": "constraints_integrations_gaps",
+      "success": true,
+      "model": "llama-3.3-70b-versatile",
+      "input_tokens": 660,
+      "output_tokens": 810
+    }
+  ]
+}
+
+3. Architecture Decisions
+=========================
+{
+  "total_components": 4,
+  "total_stack_items": 0,
+  "total_adrs": 0,
+  "total_api_endpoints": 0,
+  "llm_calls": [
+    {
+      "pass": 1,
+      "name": "architecture_design",
+      "success": true,
+      "model": "llama-3.1-8b-instant"
+    }
+  ]
+}
+
+4. Implementation Summary
+=========================
+Tasks passed: 4
+Tasks failed: 7
+Files generated: 7
+[
+  {
+    "id": "TASK-001",
+    "title": "Create database schema",
+    "tests_passed": 1
+  },
+  {
+    "id": "TASK-003",
+    "title": "Develop API endpoints for data ingestion",
+    "tests_passed": 1
+  },
+  {
+    "id": "TASK-008",
+    "title": "Implement deployment scripts",
+    "tests_passed": 1
+  },
+  {
+    "id": "TASK-009",
+    "title": "Perform unit testing",
+    "tests_passed": 1
+  }
+]
+
+5. Code Review Results
+======================
+2 critical issues require fixing before deployment: missing auth validation and SQL injection risk.
+
+6. Test Coverage
+================
+Total tests passed: 4
+Total tests failed: 4
+Critic score: 45/100
+Critic status: fail
+
+7. Deployment Configuration
+===========================
+CI/CD: GitHub Actions (.github/workflows/ci.yml)
+Containerization: Docker (if Dockerfile generated)
+Branch: main
+
+8. Security Assessment
+======================
+[
+  {
+    "id": "SEC-001",
+    "name": "Security Review",
+    "description": "Authentication, authorization, injection vulnerabilities",
+    "status": "fail",
+    "severity": "critical",
+    "findings": [
+      "No JWT validation on /api/users endpoint",
+      "SQL query built with string concatenation in UserService.get_user()"
+    ],
+    "recommendations": [
+      "Add @require_auth decorator to all protected routes",
+      "Use parameterized queries via SQLAlchemy ORM"
+    ],
+    "created_at": "2026-04-01 19:01:30.523343"
+  }
+]
+
+9. Performance Metrics
+======================
+Build time: see pipeline logs
+Total files: 7
+Total tasks: 11
+
+10. Sign-offs
+=============
+Pending client review and approval
